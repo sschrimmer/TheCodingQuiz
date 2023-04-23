@@ -1,20 +1,20 @@
-const quiz = {
-    question: "What does HTML stand for?",
+const quiz = [
+    {question: "What does HTML stand for?",
     choices: ["Cascading Style Sheets", "Graphic User Interface", "Creative Style Sheets", "HyperText Markup Language"],
-    answer: "HyperText Markup Language"
-}
+    answer: "HyperText Markup Language"},
+
 
 {
     
     question: "What does CSS stand for?",
     choices: ["HyperText Markup Language", "Cascading Style Sheets", "A command", "Creative Style Sheets"],
     answer: "Cascading Style Sheets"
-}
+},
 {
 question: "What does JS stand for?",
 choices: ["JavaScript", "Just Scrolling", "Creative Style Sheets", "Nothing at all"],
-answer: "JavaScript"
-}
+answer: "JavaScript"}
+]
 
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
