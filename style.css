@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#quiz {
+    margin: 0 auto;
+    width: 50%;
+}
+
+#results {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.hidden {
+    display: none;
+}
