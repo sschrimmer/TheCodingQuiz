@@ -1,3 +1,5 @@
+const questionCont = document.querySelector("#question-cont")
+let currentQuestion = 0
 const quiz = [
     {question: "What does HTML stand for?",
     choices: ["Cascading Style Sheets", "Graphic User Interface", "Creative Style Sheets", "HyperText Markup Language"],
@@ -21,26 +23,59 @@ const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("submit");
 const restartButton = document.getElementById("restart");
 
-function showQuiz() {
-    let output = "";
-    for (let i=0; i < quiz.length; i++) {
-        output += "<p>" + quiz[i].question + "</p>";
-        for (let j = 0; j < quiz[i].choices.length; j++) {
-            output += '<input type=" radio name="question' + i + '"value="' + quiz[i].choices[j] + '">';
-            output += '<label for="question' + i + '">' + quiz[i].choices[j] + '</label><br>';
+function startQuiz(){
 
-        }
+    document.querySelector("#welcomeScreen").style.display="none"
+renderQuestion()
+
+}
+
+function renderQuestion(){
+    questionCont.innerHTML=""
+    let questionEl=document.createElement("h3")
+    questionEl.textContent=quiz[currentQuestion].question
+    questionCont.append(questionEl)
+    for (i=0; i<quiz[currentQuestion].choices.length;i++){
+        let choiceButton = document.createElement("button")
+        choiceButton.textContent = quiz[currentQuestion].choices[i]
+        choiceButton.style.display = "block"
+        questionCont.append(choiceButton)
     }
 }
-quizContainer.innerHTML = output;
 
-function showResults()
-const answerContainers = quizContainer.querySelectorAll("input[name='question0']");
-let numCorrect= 0;
-for (let i = 0; i <answerContainers.length; i++) {
-    if(answerContainers[i].value === quiz[0].answer && answerContainers[i].checked) {
-        numCorrect++;
-    }
+function handleQuestionClick(event){
+ let selectedChoice= event.target.textContent
+if (selectedChoice ===quiz[currentQuestion].answer){
+    console.log("correct")
+} else{
+    console.log("wrong")
 }
-const score
+currentQuestion++
+renderQuestion()
+}
 
+
+// function showQuiz() {
+//     let output = "";
+//     for (let i=0; i < quiz.length; i++) {
+//         output += "<p>" + quiz[i].question + "</p>";
+//         for (let j = 0; j < quiz[i].choices.length; j++) {
+//             output += '<input type=" radio" name="question"' + i + '"value="' + quiz[i].choices[j] + '">';
+//             output += '<label for="question"' + i + '">' + quiz[i].choices[j] + '</label><br>';
+
+//         }
+//     }
+// }
+// quizContainer.innerHTML = output;
+
+// function showResults()
+// const answerContainers = quizContainer.querySelectorAll("input[name='question0']");
+// let numCorrect= 0;
+// for (let i = 0; i <answerContainers.length; i++) {
+//     if(answerContainers[i].value === quiz[0].answer && answerContainers[i].checked) {
+//         numCorrect++;
+//     }
+// }
+// const score
+document.querySelector("#start-button").addEventListener("click", startQuiz)
+document.querySelector("#question-cont").addEventListener("click", handleQuestionClick)
