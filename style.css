@@ -1,26 +1,26 @@
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #quiz {
-    margin: 0 auto;
-    width: 50%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 #results {
-    margin: 0 auto;
-    width: 50%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
-#countContainer{
-    position: absolute;
-    top: 0;
-    right: 0;
+#countContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
