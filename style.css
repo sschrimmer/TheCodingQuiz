@@ -19,3 +19,8 @@ h1 {
 .hidden {
     display: none;
 }
+#countContainer{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

@@ -1,5 +1,7 @@
 const questionCont = document.querySelector("#question-cont")
 let currentQuestion = 0
+const answerValidation= document.getElementById("validation")
+const countTime=document.getElementById("count")
 const quiz = [
     {question: "What does HTML stand for?",
     choices: ["Cascading Style Sheets", "Graphic User Interface", "Creative Style Sheets", "HyperText Markup Language"],
@@ -22,9 +24,12 @@ const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("submit");
 const restartButton = document.getElementById("restart");
-
+let count = 90
 function startQuiz(){
-
+    let timer=setInterval(()=>{
+        count--;
+        countTime.textContent=count
+    },1000)
     document.querySelector("#welcomeScreen").style.display="none"
 renderQuestion()
 
@@ -46,9 +51,18 @@ function renderQuestion(){
 function handleQuestionClick(event){
  let selectedChoice= event.target.textContent
 if (selectedChoice ===quiz[currentQuestion].answer){
-    console.log("correct")
+    answerValidation.style.display = "block"
+    answerValidation.textContent = "Correct!!!"
+    setTimeout(()=>{
+        answerValidation.style.display="none"
+    },5000)
 } else{
+   answerValidation.style.display="block"
     console.log("wrong")
+    answerValidation.textContent = "Wrong!!!"
+    setTimeout(()=>{
+        answerValidation.style.display="none"
+    },5000)
 }
 currentQuestion++
 renderQuestion()
@@ -78,4 +92,5 @@ renderQuestion()
 // }
 // const score
 document.querySelector("#start-button").addEventListener("click", startQuiz)
+
 document.querySelector("#question-cont").addEventListener("click", handleQuestionClick)
