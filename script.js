@@ -94,8 +94,8 @@ function handleQuestionClick(event) {
     answerValidation.style.display = "block";
     answerValidation.style.color = "green";
     answerValidation.textContent = "Correct!!!";
-    currentQuestionIndex +=1 
-    console.log(currentQuestionIndex)
+    currentQuestionIndex += 1;
+    console.log(currentQuestionIndex);
     setTimeout(() => {
       answerValidation.style.display = "none";
     }, 5000);
@@ -104,15 +104,23 @@ function handleQuestionClick(event) {
     console.log("wrong");
     answerValidation.textContent = "Wrong!!!";
     answerValidation.style.color = "red";
-    currentQuestionIndex +=1 
-    console.log(currentQuestionIndex)
+    currentQuestionIndex += 1;
+    console.log(currentQuestionIndex);
     setTimeout(() => {
       answerValidation.style.display = "none";
     }, 5000);
     count -= 20;
   }
-  if(currentQuestionIndex===quiz.length){
-    const userName = prompt(`You Got ${count} points. please enter your name`)
+  if (currentQuestionIndex === quiz.length) {
+    const userName = prompt(`You Got ${count} points. please enter your name`);
+    if (userName) {
+      const name = userName.trim();
+      var highScore =
+        JSON.parse(window.localStorage.getItem("highScores")) || [];
+      var newScore = { name: name, score: count };
+      highScore.push(newScore)
+      window.localStorage.setItem("highScores",JSON.stringify(highScore))
+    }
   }
   currentQuestion++;
   renderQuestion();
