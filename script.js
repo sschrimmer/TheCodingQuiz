@@ -63,6 +63,7 @@ const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("submit");
 const restartButton = document.getElementById("restart");
 let count = 90;
+const scoreButton = document.getElementById("score-button");
 function startQuiz() {
   let timer = setInterval(() => {
     countTime.textContent = count;
@@ -118,12 +119,26 @@ function handleQuestionClick(event) {
       var highScore =
         JSON.parse(window.localStorage.getItem("highScores")) || [];
       var newScore = { name: name, score: count };
-      highScore.push(newScore)
-      window.localStorage.setItem("highScores",JSON.stringify(highScore))
+      highScore.push(newScore);
+      window.localStorage.setItem("highScores", JSON.stringify(highScore));
     }
   }
   currentQuestion++;
   renderQuestion();
+}
+
+function showHighScore(event) {
+  event.preventDefault();
+  let highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+  highScores.sort(function (a, b) {
+    return b.score - a.score;
+  });
+  highScores.forEach((element) => {
+    var list = document.createElement("li");
+    list.textContent = element.name + " - " + element.score;
+    var scoreList =document.getElementById("highScore")
+    scoreList.appendChild(list)
+  });
 }
 
 document.querySelector("#start-button").addEventListener("click", startQuiz);
@@ -131,3 +146,5 @@ document.querySelector("#start-button").addEventListener("click", startQuiz);
 document
   .querySelector("#question-cont")
   .addEventListener("click", handleQuestionClick);
+
+scoreButton.addEventListener("click", showHighScore);
