@@ -5,7 +5,7 @@
 
 This is a quiz game that has questions pretaining to web development.
 
-[link to project] 
+[link to project] https://sschrimmer.github.io/TheCodingQuiz/
 
 
 ![](./images/Coding%20Quiz%20ScreenShot.png)
