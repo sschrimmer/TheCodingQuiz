@@ -121,6 +121,7 @@ function handleQuestionClick(event) {
       var newScore = { name: name, score: count };
       highScore.push(newScore);
       window.localStorage.setItem("highScores", JSON.stringify(highScore));
+      window.location.reload();
     }
   }
   currentQuestion++;
